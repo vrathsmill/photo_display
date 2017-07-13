@@ -5,7 +5,7 @@ class FlickrImage {
     this.id = id
     this.src = src
     this.alt = alt
-    this.position = position
+    this.position = $("<h1/>").attr({"position": position})
     this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt, "position": position})
   }
 }
@@ -20,13 +20,14 @@ function loadPhotos() {$("document").ready( () => {
         let alt = item.title
         let position = data.photos.photo.indexOf(item) + 1
         let currImg = new FlickrImage(id, src, alt, position)
-        console.log(currImg);
         flickrImages.push(currImg)
-        currImg.html.prependTo(".flickrPhotos")
-        
+        currImg.html.appendTo('.flickrPhotos').before(`<h2>${position}</h2>`)
       })
     })
   })
 }
+
+
+
 
 $(document).ready(loadPhotos())
