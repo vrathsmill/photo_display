@@ -5,7 +5,7 @@ class FlickrImage {
     this.id = id
     this.src = src
     this.alt = alt
-    this.position = $("<h1/>").attr({"position": position})
+    this.position = position
     this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt, "position": position})
   }
 }
@@ -22,10 +22,18 @@ function loadPhotos() {$("document").ready( () => {
         let currImg = new FlickrImage(id, src, alt, position)
         flickrImages.push(currImg)
         currImg.html.appendTo('.flickrPhotos').before(`<h2>${position}</h2>`)
+
       })
     })
   })
 }
+
+
+  function on(){
+    currImg.html.addEventListener('click', function() {
+      document.getElementByClassName('.flickrPhotos').style.display = "block"
+    })
+  }
 
 
 
