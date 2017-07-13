@@ -1,11 +1,12 @@
 const flickrImages = []
 
 class FlickrImage {
-  constructor(id, src, alt) {
+  constructor(id, src, alt, position) {
     this.id = id
     this.src = src
     this.alt = alt
-    this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt})
+    this.position = position
+    this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt, "position": position})
   }
 }
 
@@ -17,10 +18,12 @@ function loadPhotos() {$("document").ready( () => {
         let src = `http://farm${item.farm}.static.flickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`;
         let id = item.id
         let alt = item.title
-        let currImg = new FlickrImage(id, src, alt)
+        let position = data.photos.photo.indexOf(item) + 1
+        let currImg = new FlickrImage(id, src, alt, position)
         console.log(currImg);
         flickrImages.push(currImg)
         currImg.html.prependTo(".flickrPhotos")
+        
       })
     })
   })
