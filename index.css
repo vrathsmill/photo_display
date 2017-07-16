@@ -15,7 +15,7 @@ h2 {
   text-align: center;
 }
 
-#overlay {
+.overlay {
     position: fixed;
     display: none;
     width: 100%;

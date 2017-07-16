@@ -8,6 +8,8 @@ class FlickrImage {
     this.position = position
     this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt, "position": position})
   }
+
+
 }
 
 function loadPhotos() {$("document").ready( () => {
@@ -28,14 +30,27 @@ function loadPhotos() {$("document").ready( () => {
   })
 }
 
+  // function overlay(){
+  //   loadPhotos()
+  //   currImg.html.addEventListener('click', function() {
+  //     alert("hi!")
+  //     // document.getElementByClassName('.overlay').style.display = "block"
+  //   })
+  // }
 
-  function on(){
-    currImg.html.addEventListener('click', function() {
-      document.getElementByClassName('.flickrPhotos').style.display = "block"
-    })
-  }
-
+  // function click(){
+  //   this.addEventListener('click', function(){
+  //     // $(".overlay").style.display = "block"
+  //     alert("test")
+  //   })
+  // }
 
 
 
 $(document).ready(loadPhotos())
+
+$(window).load(function() {
+  let photoClick = $("img").click(function() {
+    alert('test')
+  })
+})
