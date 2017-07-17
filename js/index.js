@@ -15,7 +15,7 @@ function loadPhotos() {$("document").ready( () => {
     $.getJSON(url + "&format=json&jsoncallback=?", function(data) {
       console.log(data);
       $.each(data.photos.photo, function(i, item){
-        let src = `http://farm${item.farm}.static.flickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`;
+        let src = `http://farm${item.farm}.static.flickr.com/${item.server}/${item.id}_${item.secret}_c.jpg`;
         let id = item.id
         let alt = item.title
         let position = data.photos.photo.indexOf(item) + 1
@@ -37,15 +37,14 @@ function toggle(){
     photo.css({
       "position": "fixed",
       "display": "block",
-      "width": "100%",
-      "height": "100%",
+      "width": "90%",
+      "height": "90%",
       "top": "0",
       "left": "0",
       "right":"0",
       "bottom":"0",
       "z-index": "2",
-      "background-color": "rgba(0,0,0,0.5)",
-      "cursor":"pointer"
+      "cursor":"pointer",
     })
   }
 }
