@@ -37,14 +37,14 @@ function toggle(){
     photo.css({
       "position": "fixed",
       "display": "block",
-      "width": "90%",
-      "height": "90%",
+      "width": "95%",
+      "height": "95%",
       "top": "0",
       "left": "0",
       "right":"0",
       "bottom":"0",
-      "z-index": "2",
       "cursor":"pointer",
+      
     })
   }
 }
