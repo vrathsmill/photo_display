@@ -8,8 +8,6 @@ class FlickrImage {
     this.position = position
     this.html = $("<img/>").attr({"src": src, "id": id, "alt": alt, "position": position})
   }
-
-
 }
 
 function loadPhotos() {$("document").ready( () => {
@@ -24,33 +22,41 @@ function loadPhotos() {$("document").ready( () => {
         let currImg = new FlickrImage(id, src, alt, position)
         flickrImages.push(currImg)
         currImg.html.appendTo('.flickrPhotos').before(`<h2>${position}</h2>`)
-
       })
     })
   })
 }
 
-  // function overlay(){
-  //   loadPhotos()
-  //   currImg.html.addEventListener('click', function() {
-  //     alert("hi!")
-  //     // document.getElementByClassName('.overlay').style.display = "block"
-  //   })
-  // }
 
-  // function click(){
-  //   this.addEventListener('click', function(){
-  //     // $(".overlay").style.display = "block"
-  //     alert("test")
-  //   })
-  // }
+function toggle(){
+  let id = event.target.id
+  let photo = $(`#${id}`)
+  if (photo.css('top') !== "auto") {
+    photo.removeAttr('style')
+  } else {
+    photo.css({
+      "position": "fixed",
+      "display": "block",
+      "width": "100%",
+      "height": "100%",
+      "top": "0",
+      "left": "0",
+      "right":"0",
+      "bottom":"0",
+      "z-index": "2",
+      "background-color": "rgba(0,0,0,0.5)",
+      "cursor":"pointer"
+    })
+  }
+}
 
+function overlay(){
+  $(".flickrPhotos").click(toggle)
+}
 
 
 $(document).ready(loadPhotos())
 
-$(window).load(function() {
-  let photoClick = $("img").click(function() {
-    alert('test')
-  })
+$(window).load(function(){
+  overlay()
 })
