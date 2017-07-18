@@ -14,7 +14,6 @@ class FlickrImage {
 function loadPhotos() {$("document").ready( () => {
     var url = `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${apiKey}&safe_search=1&per_page=10`
     $.getJSON(url + "&format=json&jsoncallback=?", function(data) {
-      console.log(data);
       $.each(data.photos.photo, function(i, item){
         let src = `http://farm${item.farm}.static.flickr.com/${item.server}/${item.id}_${item.secret}_c.jpg`;
         let id = item.id
@@ -27,7 +26,6 @@ function loadPhotos() {$("document").ready( () => {
     })
   })
 }
-
 
 function toggle(){
   let id = event.target.id
@@ -45,7 +43,6 @@ function toggle(){
       "right":"0",
       "bottom":"0",
       "cursor":"pointer",
-
     })
   }
 }
