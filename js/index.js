@@ -1,4 +1,5 @@
 const flickrImages = []
+const apiKey = config.MY_KEY
 
 class FlickrImage {
   constructor(id, src, alt, position) {
@@ -11,7 +12,7 @@ class FlickrImage {
 }
 
 function loadPhotos() {$("document").ready( () => {
-    var url = "https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=4d4e0eb9dc1f28df279a4e2c50ebc4d2&safe_search=1&per_page=10"
+    var url = `https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${apiKey}&safe_search=1&per_page=10`
     $.getJSON(url + "&format=json&jsoncallback=?", function(data) {
       console.log(data);
       $.each(data.photos.photo, function(i, item){
@@ -44,7 +45,7 @@ function toggle(){
       "right":"0",
       "bottom":"0",
       "cursor":"pointer",
-      
+
     })
   }
 }
